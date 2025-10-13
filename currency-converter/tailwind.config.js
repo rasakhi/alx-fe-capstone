@@ -1,15 +1,15 @@
-/** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: ["./index.html", "./src/**/*.{js,jsx}"],
   theme: {
     extend: {
       colors: {
-        primary: {
-          50:  '#f0f9ff',
-          100: '#e0f2fe',
-          500: '#0ea5e9',
-        }
-      }
+        primary: '#2563EB',
+        accent: '#16A34A',
+        bg: '#F9FAFB',
+        border: '#E5E7EB',
+        heading: '#111827',
+        body: '#374151',
+      },
     },
   },
   plugins: [],
