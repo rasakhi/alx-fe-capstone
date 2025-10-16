@@ -1,68 +1,71 @@
 import React from "react";
+import { useState } from "react";
+import AmountInput from "../components/AmountInput";
+import CurrencySelector from "../components/CurrencySelector";
+import DateSelector from "../components/DateSelector";
+import ConvertButton from "../components/ConvertButton";
+import ConversionResult from "../components/ConversionResult";
 
 function Converter() {
-    return (
+  const [amount, setAmount] = useState("");
+  const [from, setFrom] = useState("");
+  const [to, setTo] = useState("");
+  const [date, setDate] = useState(""); // blank means latest
+  const [result, setResult] = useState(null);
+  const [rate, setRate] = useState(null);
+  const [error, setError] = useState("");
+
+  // Mock base rates relative to USD for quick testing
+  const mockBase = { USD: 1, EUR: 0.92, NGN: 1600, GBP: 0.79 };
+
+  const currencyOptions = Object.keys(mockBase);
+
+  function handleConvert() {
+    setError("");
+    setResult(null);
+    setRate(null);
+
+    if (!amount || Number(amount) <= 0) {
+      setError("Please enter a valid amount greater than 0.");
+      return;
+    }
+    if (!from || !to) {
+      setError("Please select both currencies.");
+      return;
+    }
+
+    const rateValue = mockBase[to] / mockBase[from]; // convert via USD
+    const converted = Number(amount) * rateValue;
+    setRate(rateValue);
+    setResult(converted);
+  }
+
+  return (
     <main className="min-h-[70vh] flex items-center justify-center py-16">
-      <div className="bg-white border border-border rounded-2xl shadow-md p-8 w-full max-w-3xl">
-        <header className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-heading">Currency Converter</h1>
-          <p className="text-sm text-gray-500 mt-1">Exchange Calculator</p>
+      <div className="card">
+        <header className="card-header">
+          <h1>Currency Converter</h1>
+          <p>Exchange Calculator</p>
         </header>
 
-        {/* Form area */}
-        <section className="space-y-6">
+        <section className="form-section">
+          <AmountInput amount={amount} onChange={setAmount} />
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              aria-label="amount"
-              type="number"
-              placeholder="Amount"
-              className="border border-border rounded-lg px-4 py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary"
-            />
-            <select
-              aria-label="from-currency"
-              className="border border-border rounded-lg px-4 py-3 bg-white focus:outline-none focus:ring-2 focus:ring-primary"
-              defaultValue=""
-            >
-              <option value="" disabled>From</option>
-              <option>USD</option>
-              <option>EUR</option>
-              <option>NGN</option>
-            </select>
+            <CurrencySelector label="From" value={from} onChange={setFrom} options={currencyOptions} />
+            <CurrencySelector label="To" value={to} onChange={setTo} options={currencyOptions} />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
-            <select
-              aria-label="to-currency"
-              className="col-span-2 border border-border rounded-lg px-4 py-3 bg-white focus:outline-none focus:ring-2 focus:ring-primary"
-              defaultValue=""
-            >
-              <option value="" disabled>To</option>
-              <option>USD</option>
-              <option>EUR</option>
-              <option>NGN</option>
-            </select>
-
-            <button
-              type="button"
-              className="bg-primary text-white rounded-lg px-6 py-3 hover:brightness-90 focus:outline-none focus:ring-2 focus:ring-primary"
-            >
-              Convert
-            </button>
+          <div className="mt-4">
+            <ConvertButton onClick={handleConvert} disabled={false} />
           </div>
 
-          {/* Result area (placeholder) */}
-          <div className="mt-2 text-center">
-            <p className="text-2xl font-semibold text-accent">100 EUR = 108.56 USD</p>
-            <p className="text-xs text-gray-400 mt-2">1 EUR = 1.0856 USD on 2021-12-01</p>
-          </div>
+          {error && <p className="text-sm text-red-600 mt-3">{error}</p>}
 
-          {/* Date selector */}
-          <div className="mt-6">
-            <input
-              aria-label="date"
-              type="date"
-              className="w-full border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"
-            />
+          <ConversionResult result={result} rate={rate || 0} from={from} to={to} date={date || "latest"} />
+
+          <div className="date-wrapper">
+            <DateSelector date={date} onChange={setDate} />
           </div>
         </section>
       </div>
