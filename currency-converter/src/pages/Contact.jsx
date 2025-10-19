@@ -15,7 +15,7 @@ function Contact() {
       </p>
       <div className="flex justify-center gap-6 text-blue-600">
         <a
-          href="https://x.com/yourusername"
+          href="https://x.com/michaelachumba"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:underline"
@@ -23,7 +23,7 @@ function Contact() {
           X
         </a>
         <a
-          href="https://github.com/yourusername"
+          href="https://github.com/rasakhi"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:underline"
