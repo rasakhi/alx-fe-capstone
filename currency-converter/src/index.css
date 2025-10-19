@@ -1,2 +1,11 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+body {
+  @apply bg-bg text-body antialiased;
+}
+
+.container-max {
+  @apply mx-auto px-4 sm:px-6 lg:px-8;
+}
