@@ -1,19 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-export default function Navbar() {
-    return (
-        <nav className="bg-white border-b">
-            <div className="container-max flex items-center justify-between h-16">
-                <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-primary-500 flex items-center justify-center text-white font-bold">CC</div>
-                    <span className="text-lg font-semibold">Currency Converter</span>
-                </div>
-                <div className="hidden sm:flex gap-4">
-                    <a href="#" className="text-sm hover:text-primary-500">Home</a>
-                    <a href="#" className="text-sm hover:text-primary-500">About</a>
-                    <a href="#" className="text-sm hover:text-primary-500">Contact</a>
-                </div>
-            </div>
-        </nav>
-    );
+function Navbar() {
+  return (
+    <nav className="bg-white shadow">
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <h1 className="text-xl font-semibold text-blue-600">CurrencyApp</h1>
+        <div className="space-x-4">
+          <Link to="/" className="text-gray-700 hover:text-blue-600">Home</Link>
+          <Link to="/about" className="text-gray-700 hover:text-blue-600">About</Link>
+          <Link to="/contact" className="text-gray-700 hover:text-blue-600">Contact</Link>
+        </div>
+      </div>
+    </nav>
+  );
 }
+
+export default Navbar;
