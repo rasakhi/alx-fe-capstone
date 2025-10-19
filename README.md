@@ -1,28 +1,33 @@
-# 💱 Currency Converter
+# Currency Converter
 
-A responsive web app that converts between global currencies and shows historical exchange rates.  
-Built as part of the **ALX Frontend Engineering Capstone Project** using **React**, **Tailwind CSS**, and the **Frankfurter API**.
-
----
-
-## 🖼️ Preview
-![Currency Converter Wireframe](./screenshot.png)  
+A responsive web app that converts between global currencies using live exchange rates.  
+Built as part of the **ALX Frontend Engineering Capstone Project** using **React**, **Tailwind CSS**, and the **ExchangeRate API**.
 
 ---
 
-## ✨ Features
-- Real-time currency conversion  
-- View historical exchange rates  
+## Preview
+![Currency Converter Wireframe](../screenshot.png)  
+
+---
+
+## Features
+- Real-time currency conversion    
 - Responsive design (mobile & desktop)  
 - Simple, intuitive interface  
-- Data fetched from [Frankfurter API](https://www.frankfurter.app/)
+- Data fetched from [ExchangeRate API](https://app.exchangerate-api.com/)
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 - **React (Vite)**
 - **Tailwind CSS**
 - **JavaScript (ES6+)**
-- **Frankfurter API**
+- **ExchangeRate API**
 - **Figma** (Design)
 - **Netlify** (Deployment)
+
+## Future Improvements
+- Display historical trends with charts
+- Add light/dark mode toggle
+- Enhance accessibility and mobile UX
+- Include multi-language support
