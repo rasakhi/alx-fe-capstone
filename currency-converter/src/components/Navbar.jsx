@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <nav className="bg-white shadow">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <h1 className="text-xl font-semibold text-blue-600">CurrencyApp</h1>
+        <h1 className="text-xl font-semibold text-blue-600">Currency Converter</h1>
         <div className="space-x-4">
           <Link to="/" className="text-gray-700 hover:text-blue-600">Home</Link>
           <Link to="/about" className="text-gray-700 hover:text-blue-600">About</Link>
